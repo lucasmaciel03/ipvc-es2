@@ -1,18 +1,18 @@
 -- Table: projects.tbl_task_regist
 CREATE TABLE IF NOT EXISTS projects.tbl_task_regist (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    user_id UUID NOT NULL REFERENCES auth.tbl_users(id),
-    task_id UUID NOT NULL REFERENCES projects.tbl_tasks(id),
-    time INTERVAL NOT NULL,
-    date DATE NOT NULL,
+    id SERIAL PRIMARY KEY,
+    task_id INTEGER NOT NULL REFERENCES projects.tbl_tasks(id),
+    user_id INTEGER NOT NULL REFERENCES auth.tbl_users(id),
     description TEXT,
+    hours_worked DECIMAL(5,2) NOT NULL,
+    date DATE NOT NULL DEFAULT CURRENT_DATE,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
 -- Indexes
-CREATE INDEX IF NOT EXISTS idx_task_regist_user_id ON projects.tbl_task_regist(user_id);
 CREATE INDEX IF NOT EXISTS idx_task_regist_task_id ON projects.tbl_task_regist(task_id);
+CREATE INDEX IF NOT EXISTS idx_task_regist_user_id ON projects.tbl_task_regist(user_id);
 CREATE INDEX IF NOT EXISTS idx_task_regist_date ON projects.tbl_task_regist(date);
 
 -- Trigger for updating updated_at timestamp

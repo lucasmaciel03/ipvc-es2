@@ -1,22 +1,24 @@
--- Table: auth.tbl_project_invites
-CREATE TABLE IF NOT EXISTS auth.tbl_project_invites (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    project_id UUID NOT NULL REFERENCES auth.tbl_projects(id),
-    invited_user_id UUID NOT NULL REFERENCES auth.tbl_users(id),
+-- Table: projects.tbl_project_invites
+CREATE TABLE IF NOT EXISTS projects.tbl_project_invites (
+    id SERIAL PRIMARY KEY,
+    project_id INTEGER NOT NULL REFERENCES projects.tbl_projects(id),
+    user_id INTEGER NOT NULL REFERENCES auth.tbl_users(id),
+    role VARCHAR(50) NOT NULL,
     status VARCHAR(50) NOT NULL DEFAULT 'pending',
+    invited_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    responded_at TIMESTAMP WITH TIME ZONE DEFAULT NULL,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT unique_project_invite UNIQUE (project_id, invited_user_id),
-    CONSTRAINT chk_invite_status CHECK (status IN ('pending', 'accepted', 'rejected', 'expired'))
+    UNIQUE(project_id, user_id)
 );
 
 -- Indexes
-CREATE INDEX IF NOT EXISTS idx_project_invites_project_id ON auth.tbl_project_invites(project_id);
-CREATE INDEX IF NOT EXISTS idx_project_invites_invited_user_id ON auth.tbl_project_invites(invited_user_id);
-CREATE INDEX IF NOT EXISTS idx_project_invites_status ON auth.tbl_project_invites(status);
+CREATE INDEX IF NOT EXISTS idx_project_invites_project_id ON projects.tbl_project_invites(project_id);
+CREATE INDEX IF NOT EXISTS idx_project_invites_user_id ON projects.tbl_project_invites(user_id);
+CREATE INDEX IF NOT EXISTS idx_project_invites_status ON projects.tbl_project_invites(status);
 
 -- Trigger for updating updated_at timestamp
-CREATE OR REPLACE FUNCTION auth.update_project_invites_updated_at()
+CREATE OR REPLACE FUNCTION projects.update_project_invites_updated_at()
 RETURNS TRIGGER AS $$
 BEGIN
     NEW.updated_at = CURRENT_TIMESTAMP;
@@ -25,6 +27,6 @@ END;
 $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER trigger_update_project_invites_timestamp
-    BEFORE UPDATE ON auth.tbl_project_invites
+    BEFORE UPDATE ON projects.tbl_project_invites
     FOR EACH ROW
-    EXECUTE FUNCTION auth.update_project_invites_updated_at();
+    EXECUTE FUNCTION projects.update_project_invites_updated_at();

@@ -1,13 +1,12 @@
-INSERT INTO tbl_tasks (id, users_id, project_id, description, hourly_rate, start_time, end_time, created_at, updated_at)
-VALUES (1, 1, 1, 'Task 1', 20.0, '2020-01-01 00:00:00', '2020-01-01 08:00:00', NOW(), NOW()),
-       (2, 2, 2, 'Task 2', 30.0, '2020-01-02 00:00:00', '2020-01-02 16:00:00', NOW(), NOW()),
-       (3, 3, 3, 'Task 3', 40.0, '2020-01-03 00:00:00', '2020-01-03 24:00:00', NOW(), NOW()),
-       (4, 4, 4, 'Task 4', 50.0, '2020-01-04 00:00:00', '2020-01-04 12:00:00', NOW(), NOW()),
-       (5, 5, 5, 'Task 5', 60.0, '2020-01-05 00:00:00', '2020-01-05 20:00:00', NOW(), NOW()),
-       (6, 6, 6, 'Task 6', 70.0, '2020-01-06 00:00:00', '2020-01-06 10:00:00', NOW(), NOW()),
-       (7, 7, 7, 'Task 7', 80.0, '2020-01-07 00:00:00', '2020-01-07 14:00:00', NOW(), NOW()),
-       (8, 8, 8, 'Task 8', 90.0, '2020-01-08 00:00:00', '2020-01-08 18:00:00', NOW(), NOW()),
-       (9, 9, 9, 'Task 9', 100.0, '2020-01-09 00:00:00', '2020-01-09 22:00:00', NOW(), NOW()),
-       (10, 10, 10, 'Task 10', 110.0, '2020-01-10 00:00:00', '2020-01-10 16:00:00', NOW(), NOW()),
-       (11, 11, 11, 'Task 11', 120.0, '2020-01-11 00:00:00', '2020-01-11 12:00:00', NOW(), NOW())
-       ;
+INSERT INTO projects.tbl_tasks (project_id, name, description, status, estimated_hours)
+VALUES 
+(1, 'Task 1', 'Description for task 1', 'pending', 8),
+(2, 'Task 2', 'Description for task 2', 'in_progress', 16),
+(3, 'Task 3', 'Description for task 3', 'completed', 24),
+(4, 'Task 4', 'Description for task 4', 'pending', 12),
+(5, 'Task 5', 'Description for task 5', 'in_progress', 20),
+(6, 'Task 6', 'Description for task 6', 'completed', 10),
+(7, 'Task 7', 'Description for task 7', 'pending', 14),
+(8, 'Task 8', 'Description for task 8', 'in_progress', 18),
+(9, 'Task 9', 'Description for task 9', 'completed', 22),
+(10, 'Task 10', 'Description for task 10', 'pending', 16);

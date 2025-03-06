@@ -1,12 +1,12 @@
 -- Enable UUID extension
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+-- CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 -- Create schema if not exists
 CREATE SCHEMA IF NOT EXISTS auth;
 
 -- Table: auth.tbl_users
 CREATE TABLE IF NOT EXISTS auth.tbl_users (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NULL UNIQUE,
     password VARCHAR(255) NULL,

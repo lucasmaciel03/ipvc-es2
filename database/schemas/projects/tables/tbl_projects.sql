@@ -1,7 +1,7 @@
 -- Table: projects.tbl_projects
 CREATE TABLE IF NOT EXISTS projects.tbl_projects (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    user_id UUID NOT NULL REFERENCES auth.tbl_users(id),
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL REFERENCES auth.tbl_users(id),
     name VARCHAR(255) NOT NULL,
     client_name VARCHAR(255) NOT NULL,
     hourly_rate DECIMAL(10,2) NOT NULL,

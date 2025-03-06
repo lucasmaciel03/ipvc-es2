@@ -1,11 +1,12 @@
-INSERT INTO tbl_task_regist (id, user_id, task_id, time, date, description, created_at, updated_at)
-VALUES (1, 1, 1, 8, '2020-01-01', 'Task 1 regist', NOW(), NOW()),
-       (2, 2, 2, 6, '2020-01-02', 'Task 2 regist', NOW(), NOW()),
-       (3, 3, 3, 4, '2020-01-03', 'Task 3 regist', NOW(), NOW()),
-       (4, 4, 4, 3, '2020-01-04', 'Task 4 regist', NOW(), NOW()),
-       (5, 5, 5, 9, '2020-01-05', 'Task 5 regist', NOW(), NOW()),
-       (6, 6, 6, 12, '2020-01-06', 'Task 6 regist', NOW(), NOW()),
-       (7, 7, 7, 2, '2020-01-07', 'Task 7 regist', NOW(), NOW()),
-       (8, 8, 8, 3, '2020-01-08', 'Task 8 regist', NOW(), NOW()),
-       (9, 9, 9, 6, '2020-01-09', 'Task 9 regist', NOW(), NOW()),
-       (10, 10, 10, 7, '2020-01-10', 'Task 10 regist', NOW(), NOW());
+INSERT INTO projects.tbl_task_regist (task_id, user_id, description, hours_worked, date)
+VALUES 
+(1, 1, 'Task 1 registration', 8.0, '2025-03-01'),
+(2, 2, 'Task 2 registration', 6.0, '2025-03-01'),
+(3, 3, 'Task 3 registration', 4.0, '2025-03-01'),
+(4, 4, 'Task 4 registration', 3.0, '2025-03-01'),
+(5, 5, 'Task 5 registration', 9.0, '2025-03-02'),
+(6, 6, 'Task 6 registration', 12.0, '2025-03-02'),
+(7, 7, 'Task 7 registration', 2.0, '2025-03-02'),
+(8, 8, 'Task 8 registration', 3.0, '2025-03-02'),
+(9, 9, 'Task 9 registration', 6.0, '2025-03-03'),
+(10, 10, 'Task 10 registration', 7.0, '2025-03-03');

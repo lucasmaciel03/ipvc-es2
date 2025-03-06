@@ -1,22 +1,18 @@
 -- Table: projects.tbl_tasks
 CREATE TABLE IF NOT EXISTS projects.tbl_tasks (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    user_id UUID NOT NULL REFERENCES auth.tbl_users(id),
-    project_id UUID NOT NULL REFERENCES projects.tbl_projects(id),
-    description TEXT NOT NULL,
-    hourly_rate DECIMAL(10,2) NOT NULL,
-    start_time TIMESTAMP WITH TIME ZONE NOT NULL,
-    end_time TIMESTAMP WITH TIME ZONE,
+    id SERIAL PRIMARY KEY,
+    project_id INTEGER NOT NULL REFERENCES projects.tbl_projects(id),
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    status VARCHAR(50) NOT NULL DEFAULT 'pending',
+    estimated_hours INTEGER,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT check_end_time CHECK (end_time IS NULL OR end_time > start_time)
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
 -- Indexes
-CREATE INDEX IF NOT EXISTS idx_tasks_user_id ON projects.tbl_tasks(user_id);
 CREATE INDEX IF NOT EXISTS idx_tasks_project_id ON projects.tbl_tasks(project_id);
-CREATE INDEX IF NOT EXISTS idx_tasks_start_time ON projects.tbl_tasks(start_time);
-CREATE INDEX IF NOT EXISTS idx_tasks_end_time ON projects.tbl_tasks(end_time);
+CREATE INDEX IF NOT EXISTS idx_tasks_status ON projects.tbl_tasks(status);
 
 -- Trigger for updating updated_at timestamp
 CREATE OR REPLACE FUNCTION projects.update_tasks_updated_at()
