@@ -1,3 +1,18 @@
+-- =============================================
+-- Vista de Progresso de Tarefas por Projeto
+-- =============================================
+-- Descrição: 
+-- Esta vista fornece métricas detalhadas sobre o progresso das tarefas em cada projeto.
+-- Calcula o número de tarefas em cada estado e a percentagem de conclusão.
+--
+-- Campos Calculados:
+-- total_tasks: Número total de tarefas
+-- pending_tasks: Número de tarefas pendentes
+-- in_progress_tasks: Número de tarefas em andamento
+-- completed_tasks: Número de tarefas concluídas
+-- completion_percentage: Percentagem de tarefas concluídas
+-- =============================================
+
 CREATE OR REPLACE VIEW projects.vw_project_task_progress AS
 SELECT 
     p.id AS project_id,

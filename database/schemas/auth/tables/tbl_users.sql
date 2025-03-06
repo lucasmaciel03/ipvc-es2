@@ -1,10 +1,27 @@
 -- Enable UUID extension
 -- CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
--- Create schema if not exists
+-- =============================================
+-- Tabela de Utilizadores
+-- =============================================
+-- Descrição: 
+-- Esta tabela armazena informações sobre todos os utilizadores do sistema.
+-- Cada utilizador pode participar em vários projetos com diferentes funções.
+--
+-- Campos:
+-- id: Identificador único do utilizador (auto-incremento)
+-- name: Nome completo do utilizador
+-- email: Endereço de email único do utilizador (opcional para flexibilidade de autenticação)
+-- password: Palavra-passe do utilizador (opcional para permitir autenticação externa)
+-- daily_work_hours: Número de horas de trabalho diárias previstas
+-- created_at: Data e hora de criação do registo
+-- updated_at: Data e hora da última atualização
+-- =============================================
+
+-- Criar schema se não existir
 CREATE SCHEMA IF NOT EXISTS auth;
 
--- Table: auth.tbl_users
+-- Tabela: auth.tbl_users
 CREATE TABLE IF NOT EXISTS auth.tbl_users (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
@@ -15,10 +32,10 @@ CREATE TABLE IF NOT EXISTS auth.tbl_users (
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
--- Index for email searches
+-- Índice para pesquisas por email
 CREATE INDEX IF NOT EXISTS idx_users_email ON auth.tbl_users(email);
 
--- Trigger for updating updated_at timestamp
+-- Trigger para atualização automática do updated_at
 CREATE OR REPLACE FUNCTION auth.update_users_updated_at()
 RETURNS TRIGGER AS $$
 BEGIN

@@ -1,5 +1,21 @@
-INSERT INTO projects.tbl_task_regist (task_id, user_id, description, hours_worked, date)
-VALUES 
+-- =============================================
+-- Dados de Teste: Registos de Tempo
+-- =============================================
+-- Descrição: 
+-- Este ficheiro insere dados de teste para registos de tempo.
+-- Simula o registo de horas trabalhadas pelos utilizadores nas tarefas.
+--
+-- Estrutura dos registos:
+-- - Cada registo associa um utilizador a uma tarefa
+-- - Inclui descrição do trabalho realizado
+-- - Regista as horas trabalhadas
+-- - Data do trabalho realizado
+--
+-- Nota: Os registos são distribuídos ao longo do último mês
+-- para simular um projeto em andamento
+-- =============================================
+
+INSERT INTO projects.tbl_task_regist (task_id, user_id, description, hours_worked, date) VALUES 
 (1, 1, 'Task 1 registration', 8.0, '2025-03-01'),
 (2, 2, 'Task 2 registration', 6.0, '2025-03-01'),
 (3, 3, 'Task 3 registration', 4.0, '2025-03-01'),

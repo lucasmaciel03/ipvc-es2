@@ -1,3 +1,19 @@
+-- =============================================
+-- Vista de Horas por Utilizador e Projeto
+-- =============================================
+-- Descrição: 
+-- Esta vista mostra um resumo das horas trabalhadas por cada utilizador em cada projeto.
+-- Útil para análise de desempenho e faturação.
+--
+-- Campos Calculados:
+-- assigned_tasks: Número de tarefas atribuídas ao utilizador
+-- total_hours_worked: Total de horas trabalhadas
+-- days_worked: Número de dias trabalhados
+-- avg_hours_per_day: Média de horas trabalhadas por dia
+-- first_work_date: Data do primeiro registo de trabalho
+-- last_work_date: Data do último registo de trabalho
+-- =============================================
+
 CREATE OR REPLACE VIEW projects.vw_user_project_hours AS
 SELECT 
     u.id AS user_id,

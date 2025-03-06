@@ -1,5 +1,20 @@
-INSERT INTO projects.tbl_tasks (project_id, name, description, status, estimated_hours)
-VALUES 
+-- =============================================
+-- Dados de Teste: Tarefas
+-- =============================================
+-- Descrição: 
+-- Este ficheiro insere dados de teste para tarefas.
+-- Cria tarefas em diferentes estados para cada projeto.
+--
+-- Estados das tarefas:
+-- - pending: Tarefa ainda não iniciada
+-- - in_progress: Tarefa em desenvolvimento
+-- - completed: Tarefa finalizada
+--
+-- Nota: As horas estimadas são definidas com base
+-- na complexidade esperada de cada tarefa
+-- =============================================
+
+INSERT INTO projects.tbl_tasks (project_id, name, description, status, estimated_hours) VALUES 
 (1, 'Task 1', 'Description for task 1', 'pending', 8),
 (2, 'Task 2', 'Description for task 2', 'in_progress', 16),
 (3, 'Task 3', 'Description for task 3', 'completed', 24),
