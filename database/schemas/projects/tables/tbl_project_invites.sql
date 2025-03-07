@@ -1,3 +1,5 @@
+CREATE SCHEMA IF NOT EXISTS projects;
+
 -- Table: projects.tbl_project_invites
 CREATE TABLE IF NOT EXISTS projects.tbl_project_invites (
     id SERIAL PRIMARY KEY,

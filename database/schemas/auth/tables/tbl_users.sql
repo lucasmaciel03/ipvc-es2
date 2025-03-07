@@ -24,6 +24,7 @@ CREATE SCHEMA IF NOT EXISTS auth;
 -- Tabela: auth.tbl_users
 CREATE TABLE IF NOT EXISTS auth.tbl_users (
     id SERIAL PRIMARY KEY,
+    username VARCHAR(255) NOT NULL UNIQUE,
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NULL UNIQUE,
     password VARCHAR(255) NULL,
@@ -48,3 +49,4 @@ CREATE TRIGGER trigger_update_users_timestamp
     BEFORE UPDATE ON auth.tbl_users
     FOR EACH ROW
     EXECUTE FUNCTION auth.update_users_updated_at();
+
